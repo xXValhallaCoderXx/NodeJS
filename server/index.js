@@ -27,3 +27,7 @@ app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);
   console.log("Listening On Port: ", process.env.PORT);
 });
+
+module.exports = {
+  app
+};
