@@ -24,12 +24,12 @@ beforeEach(done => {
     .then(() => done());
 });
 
-describe("POST /todo/add", () => {
+describe("POST /todos", () => {
   it("Should create a new todo", done => {
     const text = "This is testing";
 
     request(app)
-      .post("/api/todo/add")
+      .post("/api/todos")
       .send({
         text
       })
@@ -58,7 +58,7 @@ describe("POST /todo/add", () => {
 
   it("Should not created a Todo  - Invalid body data", done => {
     request(app)
-      .post("/api/todo/add")
+      .post("/api/todos")
       .send({})
       .expect(400)
       .end((err, res) => {
@@ -92,7 +92,7 @@ describe("GET /todos", () => {
 
   it("Should get a Todo", done => {
     request(app)
-      .get(`/api/todo/${todos[0]._id.toHexString()}`)
+      .get(`/api/todos/${todos[0]._id.toHexString()}`)
       .expect(200)
       .expect(res => {
         expect(res.body.data.text).toBe(todos[0].text);
@@ -162,7 +162,7 @@ describe("PATCH /todos/:id", () => {
     let hexID = todos[0]._id.toHexString();
     let dummyText = "This should be the new text";
     request(app)
-      .patch(`/api/todo/${hexID}`)
+      .patch(`/api/todos/${hexID}`)
       .send({
         completed: true,
         text: dummyText
