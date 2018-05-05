@@ -48,9 +48,8 @@ router.get("/todo/:id", (req, res) => {
     });
 });
 
-router.delete("/todo/delete/:id", (req, res) => {
+router.delete("/todo/:id", (req, res) => {
   const id = req.params.id;
-
   Todo.findOneAndRemove({ _id: id })
     .then(todo => {
       if (!todo) {
@@ -61,22 +60,27 @@ router.delete("/todo/delete/:id", (req, res) => {
       return res.status(200).send({ success: true, data: todo });
     })
     .catch(e => {
-      return res.status(400).send({ success: false, data: null });
+      return res.status(404).send({ success: false, data: null });
     });
 });
 
-router.post("/todo/update", (req, res) => {
-  const id = req.body.id;
+router.patch("/todo/:id", (req, res) => {
+  const id = req.params.id;
   const text = req.body.text;
+  const completed = req.body.completed;
 
   Todo.findByIdAndUpdate(
     { _id: id },
     {
-      $set: { text: text }
+      $set: { 
+        completedAt: new Date().getTime(),
+        text, 
+        completed }
     },
     { new: true }
   )
     .then(todo => {
+      
       if (!todo) {
         return res
           .status(404)
