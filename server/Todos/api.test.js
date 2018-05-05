@@ -2,7 +2,7 @@ const expect = require('expect');
 const request = require('supertest');
 const { ObjectID } = require('mongodb');
 
-const { Todo } = require('./model');
+const Todo = require('./model');
 const { app } = require('../index');
 
 const todos = [
@@ -10,13 +10,12 @@ const todos = [
   {_id: new ObjectID() ,text: "Second todo", completed: true, completedAt: 333}
 ]
 
-// beforeEach(done => {
-//   // Will only move to test case after done is called
-//   Todo.remove({}).then(() => {
-//     // Wipes the DB
-//     return Todo.insertMany(todos)
-//   }).then(() => done());
-// });
+beforeEach(done => {
+  Todo.remove({}).then(() => {
+    // Wipes the DB
+    return Todo.insertMany(todos)
+  }).then(() => done());
+});
 
 describe('POST /todo/add', () => {
   it('Should create a new todo', done => {
@@ -30,7 +29,6 @@ describe('POST /todo/add', () => {
       .expect(200)
       .expect(res => {
         expect(res.body.data.text).toBe(text);
-        done();
       })
       .end((err, res) => {
         if(err){
@@ -38,14 +36,14 @@ describe('POST /todo/add', () => {
           // Return so we stop the execution of test
           return done(err);
         }
-        // Todo.find({text}).then(todos => {
-        //   expect(todos.length).toBe(1);
-        //   expect(todos[0].text).toBe(text);
-        //   done();
-        // }).catch(err => {
-        //   // Catches any of the above errors
-        //   done(err);
-        // })
+        Todo.find({text}).then(todos => {
+          expect(todos.length).toBe(1);
+          expect(todos[0].text).toBe(text);
+          done();
+        }).catch(err => {
+          // Catches any of the above errors
+          done(err);
+        })
       })
   });
 });
