@@ -20,8 +20,10 @@ app.use((req, res, next) => {
 });
 
 const todoAPI = require("./Todos/api");
+const userAPI = require("./Users/api");
 
 app.use("/api", todoAPI);
+app.use("/api", userAPI);
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);

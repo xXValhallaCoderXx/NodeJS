@@ -9,12 +9,16 @@ const Todo = mongoose.model("Todo", {
   },
   completed: {
     type: Boolean,
-    default: false,
+    default: false
   },
   completedAt: {
     type: Number,
     default: null,
     trim: true
+  },
+  _creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
   }
 });
 
