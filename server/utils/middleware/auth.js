@@ -17,8 +17,7 @@ var authenticate = (req, res, next) => {
       next();
     })
     .catch(e => {
-      console.log("WHY E: ", e)
-      res.status(401).send("Auth is required");
+      res.status(401).send({ success: false, data: "Auth is required" });
     });
 };
 

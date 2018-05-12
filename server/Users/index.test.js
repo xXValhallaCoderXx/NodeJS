@@ -23,45 +23,44 @@ describe("GET /api/users/me", () => {
       .end(done);
   });
 
-  // it("should return 401 if not authenticated", done => {
-  //   request(app)
-  //     .get("/api/users/me")
-  //     .expect(401)
-  //     .expect(res => {
-  //       console.log("WHAHAHAHAH: ", res.body)
-  //       expect(res.body).toEqual({});
-  //     })
-  //     .end(done);
-  // });
+  it("should return 401 if not authenticated", done => {
+    request(app)
+      .get("/api/users/me")
+      .expect(401)
+      .expect(res => {
+        expect(res.body.data).toEqual("Auth is required");
+      })
+      .end(done);
+  });
 });
 
 describe("POST /api/users", () => {
-  // it("should create a user", done => {
-  //   var email = "example@example.com";
-  //   var password = "123mnb";
+  it("should create a user", done => {
+    var email = "example@example.com";
+    var password = "123mnb";
 
-  //   request(app)
-  //     .post("/api/users")
-  //     .send({ email, password })
-  //     .expect(200)
-  //     .expect(res => {
-  //       expect(res.headers["x-auth"]).toExist();
-  //       expect(res.body._id).toExist();
-  //       expect(res.body.email).toBe(email);
-  //     })
-  //     .end(err => {
-  //       if (err) {
-  //         return done(err);
-  //       }
-  //       User.findOne({ email })
-  //         .then(user => {
-  //           expect(user).toBeTruthy();
-  //           expect(user.password).toNotEqual(password);
-  //           done();
-  //         })
-  //         .catch(e => done(e));
-  //     });
-  // });
+    request(app)
+      .post("/api/users")
+      .send({ email, password })
+      .expect(200)
+      .expect(res => {
+        expect(res.headers["x-auth"]).toBeTruthy();
+        expect(res.body._id).toBeTruthy();
+        expect(res.body.email).toBe(email);
+      })
+      .end(err => {
+        if (err) {
+          return done(err);
+        }
+        User.findOne({ email })
+          .then(user => {
+            expect(user).toBeTruthy();
+            //expect(user.password).toNotEqual(password);
+            done();
+          })
+          .catch(e => done(e));
+      });
+  });
 
   it("should return validation errors if invalid", done => {
     var email = "example";
@@ -87,68 +86,70 @@ describe("POST /api/users", () => {
 });
 
 describe("POST /api/users/login", () => {
-  // it("should login user and return auth token", done => {
-  //   request(app)
-  //     .post("/api/users/login")
-  //     .send({ email: users[1].email, password: users[1].password })
-  //     .expect(200)
-  //     .expect(res => {
-  //       expect(res.headers["x-auth"]).toBeTruthy();
-  //     })
-  //     .end((err, res) => {
-  //       if (err) {
-  //         return done(err);
-  //       }
-  //       User.findById(users[1]._id)
-  //         .then(user => {
-  //           expect(user.tokens[1]).toInclude({
-  //             access: "auth",
-  //             token: res.headers["x-auth"]
-  //           });
-  //           done();
-  //         })
-  //         .catch(e => done(e));
-  //     });
-  // });
+  it("should login user and return auth token", done => {
+    request(app)
+      .post("/api/users/login")
+      .send({ email: users[1].email, password: users[1].password })
+      .expect(200)
+      .expect(res => {
+        expect(res.headers["x-auth"]).toBeTruthy();
+      })
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        User.findById(users[1]._id)
+          .then(user => {
+            expect(user.tokens[1]).toMatchObject({
+              access: "auth",
+              token: res.headers["x-auth"]
+            });
+            done();
+          })
+          .catch(e => done(e));
+      });
+  });
 
-  // it("should reject invalid logins", done => {
-  //   let email = "nate@test.com";
-  //   let password = "notreal";
-  //   request(app)
-  //     .post("/api/users/login")
-  //     .send({ email, password })
-  //     .expect(400)
-  //     .expect(res => {
-  //       expect(res.headers["x-auth"]).toNotExist();
-  //     })
-  //     .end((err, res) => {
-  //       if (err) {
-  //         return done(err);
-  //       }
-  //       User.findById(users[1]._id)
-  //         .then(user => {
-  //           expect(user.tokens.length).toBe(1);
-  //           done();
-  //         })
-  //         .catch(e => done(e));
-  //     });
-  // });
+  it("should reject invalid logins", done => {
+    let email = "nate@test.com";
+    let password = "notreal";
+    request(app)
+      .post("/api/users/login")
+      .send({ email, password })
+      .expect(400)
+      .expect(res => {
+        expect(res.headers["x-auth"]).toBeFalsy();
+      })
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        User.findById(users[1]._id)
+          .then(user => {
+            expect(user.tokens.length).toBe(1);
+            done();
+          })
+          .catch(e => done(e));
+      });
+  });
 });
 
-// describe("DELETE users/me/token", done => {
-//   request(app)
-//     .delete("/api/users/me/token")
-//     .set("x-auth", users[0].tokens[0].token)
-//     .expect(200)
-//     .end((err, res) => {
-//       if (err) {
-//         return done(err);
-//       }
-//       User.findById(users[1]._id)
-//         .then(user => {
-//           expect(user.tokens.length).toBe(0);
-//           done();
-//         })
-//         .catch(e => done(e));
-//     });
+// describe("POST /api/users/login", () => {
+//   it("should delete a users token", done => {
+//     request(app)
+//       .delete("/api/users/me/token")
+//       .set("x-auth", users[0].tokens[0].token)
+//       .expect(200)
+//       .end((err, res) => {
+//         if (err) {
+//           return done(err);
+//         }
+//         User.findById(users[1]._id)
+//           .then(user => {
+//             expect(user.tokens.length).toBe(0);
+//             done();
+//           })
+//           .catch(e => done(e));
+//       });
+//   });
 // });
