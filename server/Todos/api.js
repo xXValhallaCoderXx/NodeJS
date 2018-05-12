@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const { ObjectID } = require("mongodb");
-const { authenticate } = require("../middleware/auth");
+const { authenticate } = require("../utils/middleware/auth");
 
 const Todo = require("./model");
 

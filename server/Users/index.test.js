@@ -5,7 +5,7 @@ const { ObjectID } = require("mongodb");
 const { User } = require("./model");
 const { app } = require("../index");
 
-const { users, populateUsers, todos } = require("../tests/seed");
+const { users, populateUsers, todos } = require("../utils/seed-db");
 
 beforeEach(populateUsers);
 //beforeEach(populateTodos);

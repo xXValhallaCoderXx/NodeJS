@@ -3,7 +3,7 @@ const router = express.Router();
 const _ = require("lodash");
 const bodyParser = require("body-parser");
 
-const { authenticate } = require("../middleware/auth");
+const { authenticate } = require("../utils/middleware/auth");
 
 const {User} = require("./model");
 
