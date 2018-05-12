@@ -3,7 +3,7 @@ const { User } = require("../Users/model");
 // Middleware
 var authenticate = (req, res, next) => {
   var token = req.header("x-auth");
-
+  console.log("THE TOKEN: ", token);
   // Create a model method
   User.findByToken(token)
     .then(user => {

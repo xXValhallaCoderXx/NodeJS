@@ -1,17 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
-const { ObjectID } = require('mongodb');
+const { ObjectID } = require("mongodb");
+const { authenticate } = require("../middleware/auth");
 
 const Todo = require("./model");
 
 router.use(bodyParser.json());
 
-// GET -- List of all Todos
-router.get("/todos", (req, res) => {
-  Todo.find()
+// Authenticate middleware - Will get user object to add data into the request
+
+// GET -- List of all Todos OF logged in user
+router.get("/todos", authenticate, (req, res) => {
+  Todo.find({ _creator: req.user._id })
     .then(todos => {
-      return res.status(200).send({ success: true, data: todos });
+      return res.status(200).send({ success: true, data: {todos} });
     })
     .catch(e => {
       return res.status(400).send({ success: false, data: null });
@@ -19,11 +22,12 @@ router.get("/todos", (req, res) => {
 });
 
 // GET -- Get a specific Todo via ID
-
-router.get("/todos/:id", (req, res) => {
+router.get("/todos/:id", authenticate, (req, res) => {
   const id = req.params.id;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               // }
-  Todo.findById(id)
+  Todo.findOne({
+    _id: id,
+    _creator: req.user._id
+  })
     .then(todo => {
       if (!todo) {
         return res
@@ -37,13 +41,13 @@ router.get("/todos/:id", (req, res) => {
     });
 });
 
-// POST - Create a new Todo
-
-router.post("/todos", (req, res) => {
+// POST - Create a new Todo under specific logged in user
+router.post("/todos", authenticate, (req, res) => {
   const todo = new Todo({
-    text: req.body.text
+    text: req.body.text,
+    // The authenticate middleare will get the user object
+    _creator: req.user._id
   });
-
   todo
     .save()
     .then(doc => {
@@ -54,11 +58,12 @@ router.post("/todos", (req, res) => {
     });
 });
 
-
-
-router.delete("/todos/:id", (req, res) => {
+router.delete("/todos/:id", authenticate, (req, res) => {
   const id = req.params.id;
-  Todo.findOneAndRemove({ _id: id })
+  Todo.findOneAndRemove({
+    _id: id,
+    _creator: req.user._id
+  })
     .then(todo => {
       if (!todo) {
         return res
@@ -72,13 +77,13 @@ router.delete("/todos/:id", (req, res) => {
     });
 });
 
-router.patch("/todos/:id", (req, res) => {
+router.patch("/todos/:id", authenticate, (req, res) => {
   const id = req.params.id;
   const text = req.body.text;
   let completed = req.body.completed;
 
   let completedAt;
-  if(completed){
+  if (completed) {
     // getTime returns a JS Timestamp
     completedAt = new Date().getTime();
   } else {
@@ -86,18 +91,21 @@ router.patch("/todos/:id", (req, res) => {
     completedAt = null;
   }
 
-  Todo.findByIdAndUpdate(
-    { _id: id },
+  Todo.findOneAndUpdate(
     {
-      $set: { 
+      _id: id,
+      _creator: req.user._id
+    },
+    {
+      $set: {
         completedAt: completedAt,
-        text, 
-        completed }
+        text,
+        completed
+      }
     },
     { new: true }
   )
     .then(todo => {
-      
       if (!todo) {
         return res
           .status(404)

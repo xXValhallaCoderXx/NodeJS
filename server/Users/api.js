@@ -23,7 +23,6 @@ router.post('/users', (req, res) => {
     // Prefix with x- is a customer header
     res.header('x-auth', token).send(user);
   }).catch(e => {
-    console.log("WHY E: ", e)
     return res.status(400).send(e)
   })
 });

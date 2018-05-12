@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" &&  nodemon ./server",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && jest",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
   "dependencies": {
@@ -19,9 +19,16 @@
     "validator": "^10.1.0"
   },
   "devDependencies": {
+    "expect": "^22.4.3",
     "jest": "^22.4.3",
+    "mocha": "^5.1.1",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.3",
     "supertest": "^3.0.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
