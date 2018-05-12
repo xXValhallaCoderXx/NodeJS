@@ -1,5 +1,13 @@
-# NodeJS Rest API
+# Node JS - Rest API
 
-- No Authentication
-- MongoDB
-- Mocha Tests
+This application is a basic CRUD Todo application to get a better understanding of the following:
+
+- Node JS
+- Express JS
+- API
+
+## Setup Application
+
+## Start Application
+
+## Routes
