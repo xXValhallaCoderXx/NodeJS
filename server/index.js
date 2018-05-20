@@ -2,11 +2,12 @@ require("../config/index");
 
 const express = require("express");
 const logger = require("morgan");
+const expressGraphQL = require('express-graphql');
 
 const { mongoose } = require("./db");
+const schema = require('./schema');
 
 const app = express();
-
 app.use(logger("dev"));
 
 // Allow CORS
@@ -19,9 +20,10 @@ app.use((req, res, next) => {
   next();
 });
 
-const todoAPI = require("./Todos/api");
-
-app.use("/api", todoAPI);
+app.use('/graphql', expressGraphQL({
+  schema,
+  graphiql: true
+}));
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);
