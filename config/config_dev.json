@@ -1,12 +1,12 @@
 {
   "test": {
     "PORT": 3000,
-    "MONGODB_URI": "mongodb://xXValhallaXx:cheese@ds229290.mlab.com:29290/graphql-udemy-02",
+    "MONGODB_URI": "mongodb://localhost:27017/Test-GQL-Todo",
     "JWT_SECRET": "123456"
   },
   "dev": {
     "PORT": 3000,
-    "MONGODB_URI": "mongodb://xXValhallaXx:cheese@ds229290.mlab.com:29290/graphql-udemy-02",
+    "MONGODB_URI": "mongodb://localhost:27017/GQL-Todo",
     "JWT_SECRET": "123456"
   }
 }
