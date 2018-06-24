@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./server",
+    "dev": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" && node ./server",
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },

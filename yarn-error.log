@@ -1,5 +1,5 @@
 Arguments: 
-  E:\Programs\node\node.exe E:\Programs\yarn\bin\yarn.js
+  E:\Programs\node\node.exe E:\Programs\yarn\bin\yarn.js test
 
 PATH: 
   E:\emsdk;E:\emsdk\clang\e1.37.9_64bit;E:\Programs\nodejs\node_modules\npm;E:\emsdk\python\2.7.5.3_64bit;E:\emsdk\emscripten\1.37.9;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Git\cmd;C:\watchmen;E:\Programs\postgreSQL\pg96\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\renat\.cargo\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;E:\Programs\java_jdk\bin;E:\Programs\node\;E:\Programs\yarn\bin\;C:\WINDOWS\System32\OpenSSH\;C:\Users\renat\.cargo\bin;C:\Users\renat\AppData\Local\Microsoft\WindowsApps;E:\Programs\Microsoft VS Code\bin;E:\Programs\Heroku\bin;;C:\Program Files\Docker Toolbox;C:\Users\renat\AppData\Roaming\npm;C:\Users\renat\AppData\Local\Yarn\bin
@@ -48,7 +48,7 @@ npm manifest:
       ]
     },
     "engines": {
-      "node": "8.11.2"
+      "node": "8.10.0"
     }
   }
 
@@ -4171,14 +4171,17 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: Found incompatible module
-      at new MessageError (E:\Programs\yarn\lib\cli.js:186:110)
-      at Object.checkOne (E:\Programs\yarn\lib\cli.js:62444:11)
-      at E:\Programs\yarn\lib\cli.js:22773:75
-      at Generator.next (<anonymous>)
-      at step (E:\Programs\yarn\lib\cli.js:98:30)
-      at E:\Programs\yarn\lib\cli.js:116:14
-      at new Promise (<anonymous>)
-      at new F (E:\Programs\yarn\lib\cli.js:23451:28)
-      at E:\Programs\yarn\lib\cli.js:95:12
-      at E:\Programs\yarn\lib\cli.js:22777:27
+  Error: Command failed.
+  Exit code: 1
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c export NODE_ENV=test || SET "NODE_ENV=test" && mocha server/**/*.test.js
+  Directory: D:\Dev\Github\NodeJS-TODO-API
+  Output:
+  
+      at ProcessTermError.MessageError (E:\Programs\yarn\lib\cli.js:186:110)
+      at new ProcessTermError (E:\Programs\yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (E:\Programs\yarn\lib\cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

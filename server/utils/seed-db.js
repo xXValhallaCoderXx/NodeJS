@@ -57,6 +57,7 @@ const populateUsers = done => {
 };
 
 const populateTodos = done => {
+  console.log("WAHAHHAHAH")
   // Will only move to test case after done is called
   Todo.remove({}).then(() => {
     // Wipes the DB
