@@ -1,12 +1,6 @@
 # Node JS - Rest API
 
-This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Authentication using the following technologies.
-
-- Node JS
-- Express JS
-- MongoDB
-- JWT
-- API
+This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Authentication using the following technologies: **ExpressJS, MongoDB, Mongoose, JWT**
 
 ## Setup and Start Application
 - `yarn` This will install application dependecies
