@@ -1,13 +1,18 @@
+// Env variables for Dev and Testing
 require("../config/index");
 
 const express = require("express");
-const logger = require("morgan");
-
 const { mongoose } = require("./db");
-
 const app = express();
 
-app.use(logger("dev"));
+// Application Middleware
+
+// Application middleware for Dev / Testing
+if(process.env.NODE_ENV !== "production"){
+  const logger = require("morgan");
+
+  app.use(logger("dev"));
+}
 
 // Allow CORS
 app.use((req, res, next) => {
@@ -20,8 +25,9 @@ app.use((req, res, next) => {
   next();
 });
 
-const todoAPI = require("./Todos/api");
-const userAPI = require("./Users/api");
+// Define Application API Routes
+const todoAPI = require("./todos/api");
+const userAPI = require("./users/api");
 
 app.use("/api", todoAPI);
 app.use("/api", userAPI);

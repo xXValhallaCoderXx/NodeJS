@@ -1,4 +1,4 @@
-const { User } = require("../../Users/model");
+const { User } = require("../../users/model");
 
 // Middleware
 var authenticate = (req, res, next) => {
