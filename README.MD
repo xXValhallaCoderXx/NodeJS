@@ -47,18 +47,22 @@ This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Au
 ### GET TODOS
 - GET
 - Route: `api/todos`
+- Expected x-auth in header
 
 ### GET A TODO
 - GET
 - Route: `api/todos/:id`
+- Expected x-auth in header
 
 ### DELETE A TODO
 - DELETE
 - Route: `api/todos/:id`
+- Expected x-auth in header
 
 ### CREATE TODO
 - POST
 - Route: `/api/todos`
+- Expected x-auth in header
 **body**
 ```
 {
@@ -68,6 +72,7 @@ This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Au
 ### UPDATE A TODO
 - POST
 - Route: `/api/todos/:id`
+- Expected x-auth in header
 **body**
 ```
 {
