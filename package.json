@@ -30,5 +30,8 @@
     "testPathIgnorePatterns": [
       "/node_modules/"
     ]
+  },
+  "engines": {
+    "node": "8.11.2"
   }
 }
