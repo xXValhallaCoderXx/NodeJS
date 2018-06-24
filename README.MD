@@ -1,6 +1,6 @@
 # Node JS - Rest API
 
-This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Authenticatio using the following technologies.
+This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Authentication using the following technologies.
 
 - Node JS
 - Express JS
@@ -11,12 +11,15 @@ This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Au
 ## Setup and Start Application
 - `yarn` This will install application dependecies
 - Ensure you have an instance of mongodb running
-- `yarn start` will start the application
+- `yarn dev` will start the application
+- `yarn test` will run tests **WIP**
 
-## Route API
+## USER API
 
-### POST: api/users
-- Expected body
+### Create User
+- POST
+- Route: `/api/users`
+**body**
 ```
 {
   "email": "nate@gmail.com", (string)
@@ -24,35 +27,48 @@ This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Au
 }
 ```
 
-### POST: api/users/login
-- Expected body
+### Login User
+- POST
+- Route: `/api/users/login`
+**body**
 ```
 {
   "email": "nate@gmail.com", (string)
   "password: "123456" (string)
 }
 ```
-
-### DELETE: api/users/me/token
+### DELETE TOKEN - LOGOUT
+- DELETE
+- Route: `api/users/me/token`
 - Expected x-auth in header
 
+## TODO API
 
-### GET: api/todos
+### GET TODOS
+- GET
+- Route: `api/todos`
 
-### GET: api/api/todos/:id
+### GET A TODO
+- GET
+- Route: `api/todos/:id`
 
-### POST: api/todos
-- Expected body
+### DELETE A TODO
+- DELETE
+- Route: `api/todos/:id`
+
+### CREATE TODO
+- POST
+- Route: `/api/todos`
+**body**
 ```
 {
   "text": "Some text"
 }
 ```
-
-### DELETE: api/api/todos/:id
-
-### PATCH: api/todos/:id
-- Expected body
+### UPDATE A TODO
+- POST
+- Route: `/api/todos/:id`
+**body**
 ```
 {
   "text": "Some text",
