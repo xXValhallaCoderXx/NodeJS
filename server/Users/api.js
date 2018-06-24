@@ -44,10 +44,6 @@ router.delete("/users/me/token", authenticate, (req, res) => {
   }, () => {
     res.status(400).send();
   })
-})
-
-router.get("/users/me", authenticate, (req, res) => {
-  res.send(req.user);
-})
+});
 
 module.exports = router;
