@@ -72,7 +72,6 @@ describe("GET /todos", () => {
       .set("x-auth", users[0].tokens[0].token)
       .expect(200)
       .expect(res => {
-        console.log("WHHHY ", res.body);
         expect(res.body.data.todos.length).toBe(1);
       })
       .end(done);

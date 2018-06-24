@@ -44,7 +44,6 @@ const users = [
 
 // Insert Many does not run Middleware
 const populateUsers = done => {
-  console.log("HMMHHM")
   User.remove({})
     .then(() => {
       // We have 2 promises here

@@ -114,7 +114,6 @@ router.patch("/todos/:id", authenticate, (req, res) => {
       return res.status(200).send({ success: true, data: todo });
     })
     .catch(e => {
-      console.log("ERROR: ", e);
       return res.status(400).send({ success: false, data: null });
     });
 });
