@@ -12,14 +12,16 @@ not be able to access the todos of other users.
 
 ### Node REST Authenticated API
 
+**Hosted** - https://ancient-shelf-71542.herokuapp.com/
+
+**Repo** - https://github.com/xXValhallaCoderXx/NodeJS-TODO-API/tree/02-JWT-Rest-API
+
 **Tech**
 - Express Server
 - MongoDB (NoSQL)
 - Mongoose (ORM)
 - JWT
 
-**Hosted** - 
 
-**Repo** - https://github.com/xXValhallaCoderXx/NodeJS-TODO-API/tree/02-JWT-Rest-API
 
 ### Node GraphQL Authenticated API
