@@ -80,3 +80,17 @@ This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Au
   "completed: true / false
 }
 ```
+
+## Create App and Initial Heroku Deployment
+- `heroku create`
+- `heroku addons:create mongolab:sandbox`
+- `heroku config`
+- ADD JWT CONFIG ENV
+- `git push heroko master` NOTE: If working from a branch: `git push heroku 02-JWT-Rest-API:master`
+
+### Heroku Commands
+- `heroku logs`
+- `heroku config`
+- `heroku config:set SOMENAME=SOMEVALUE`
+- `heroku config:unset SOMENAME`
+- `heroku config:get SOMENAME`
