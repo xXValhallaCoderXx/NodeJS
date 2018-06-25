@@ -10,7 +10,7 @@ These are show case sample programs to get a basic understanding of various diff
 A basic TODO Application will be used as the core concept, it will provide a login, and logout function allowing the users to CRUD their own todos, and they should
 not be able to access the todos of other users.
 
-### Node REST Authenticated API
+### REST Authenticated API
 
 **Hosted** - https://ancient-shelf-71542.herokuapp.com/
 
@@ -24,7 +24,7 @@ not be able to access the todos of other users.
 
 
 
-### Node GraphQL Authenticated API
+### GraphQL Authenticated API
 
 **Hosted** - WIP
 
