@@ -25,3 +25,14 @@ not be able to access the todos of other users.
 
 
 ### Node GraphQL Authenticated API
+
+**Hosted** - WIP
+
+**Repo** - https://github.com/xXValhallaCoderXx/NodeJS-TODO-API/tree/02-GraphQL-JWT-API
+
+**Tech**
+- Express Server
+- Express graphql
+- MongoDB (NoSQL)
+- Mongoose (ORM)
+- JWT
