@@ -36,4 +36,12 @@ function login({ email, password, context }) {
     });
 }
 
+function logout({context}){
+  // req.user.removeToken(req.token).then(() => {
+  //   res.status(200).send();
+  // }, () => {
+  //   res.status(400).send();
+  // })
+}
+
 module.exports = { signup, login };
