@@ -1,13 +1,50 @@
-# Node JS - Rest API
+# Node JS - GraphQl API
 
-This application is a basic CRUD Todo application to get a better understanding of the following:
+This is a basic "Todo Application" cover concepts such as CRUD, DB Relations, Authentication using the following technologies: **ExpressJS, GraphQL, MongoDB, Mongoose, JWT**
 
-- Node JS
-- Express JS
-- API
+## Setup and Start Application
+- `yarn` This will install application dependecies
+- Ensure you have an instance of mongodb running
+- `yarn dev` will start the application
+- `yarn test` will run tests **WIP**
 
-## Setup Application
+## Query
 
-## Start Application
+### Get All Todos - For Current Logged In User
+- Expects `x-auth` token to be in header
+```
+query {
+  todos{
+    id
+    text
+    completed
+  }
+}
+```
+## Mutations
 
-## Routes
+### Sign Up
+- Response will inject token in header so he will be authenticated on success
+```
+mutation {
+  addUser(email: "gung_fu", password: "123456"){
+    id
+    email
+    password
+  }
+}
+```
+
+## Create App and Initial Heroku Deployment
+- `heroku create`
+- `heroku addons:create mongolab:sandbox`
+- `heroku config`
+- ADD JWT CONFIG ENV
+- `git push heroko master` NOTE: If working from a branch: `git push heroku 02-JWT-Rest-API:master`
+
+### Heroku Commands
+- `heroku logs`
+- `heroku config`
+- `heroku config:set SOMENAME=SOMEVALUE`
+- `heroku config:unset SOMENAME`
+- `heroku config:get SOMENAME`

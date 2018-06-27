@@ -2,10 +2,10 @@ require("../config/index");
 
 const express = require("express");
 const logger = require("morgan");
-const expressGraphQL = require('express-graphql');
+const expressGraphQL = require("express-graphql");
 
 const { mongoose } = require("./db");
-const schema = require('./schema');
+const schema = require("./schema");
 
 const app = express();
 app.use(logger("dev"));
@@ -20,10 +20,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/graphql', expressGraphQL({
-  schema,
-  graphiql: true
-}));
+// Sending in req / res as context to be avaiable in gql resolve functions
+app.use("/gql", (req, res) => {
+  return expressGraphQL({
+    schema,
+    graphiql: true,
+    context: { req, res }
+  })(req, res);
+});
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);
