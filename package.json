@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" &&  nodemon ./server"
+    "dev": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" &&  nodemon ./server",
+    "start": "node ./server"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -16,12 +17,15 @@
     "graphql-tag": "^2.9.2",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
-    "mongoose": "^5.1.1"
+    "mongoose": "^5.1.1",
+    "morgan": "^1.9.0"
   },
   "devDependencies": {
     "jest": "^22.4.3",
-    "morgan": "^1.9.0",
     "nodemon": "^1.17.3",
     "supertest": "^3.0.0"
+  },
+  "engines": {
+    "node": "8.10.0"
   }
 }

@@ -7,7 +7,7 @@ const { authenticate } = require("../utils/auth");
 const todoQueries = {
   todos: {
     type: new GraphQLList(TodoType),
-    description: "Return all todos of authentcated user",
+    description: "AUTH: Get all todos of logged in user",
     resolve(parentValue, {}, context) {
       return authenticate(context.req)
         .then(user => {
@@ -27,7 +27,7 @@ const todoQueries = {
   },
   todo: {
     type: TodoType,
-    description: "Return specifc todo of user",
+    description: "AUTH: Get a todo for logged in user",
     args: {
       id: { type: GraphQLString }
     },

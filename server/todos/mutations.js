@@ -7,7 +7,7 @@ const { authenticate } = require("../utils/auth");
 const todoMutations = {
   addTodo: {
     type: TodoType,
-    description: "Add a new todo",
+    description: "AUTH: Add new todo for logged in user",
     args: {
       text: { type: GraphQLString }
     },

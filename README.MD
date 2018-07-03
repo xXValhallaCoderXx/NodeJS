@@ -40,7 +40,9 @@ mutation {
 - `heroku addons:create mongolab:sandbox`
 - `heroku config`
 - ADD JWT CONFIG ENV
-- `git push heroko master` NOTE: If working from a branch: `git push heroku 02-JWT-Rest-API:master`
+- `heroku config:set SOMENAME=DragonBallZIsTheBest`
+- `git push heroko master` NOTE: Since we are working on a sidebranch this wont work
+- Run this command instead: `git push heroku 02-GraphQL-JWT:master`
 
 ### Heroku Commands
 - `heroku logs`

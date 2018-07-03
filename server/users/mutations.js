@@ -13,7 +13,7 @@ const AuthService = require("./auth");
 const userMutations = {
   signup: {
     type: UserType,
-    description: "Add new user",
+    description: "Add new user a JWT is provided in the response header",
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString }
@@ -24,7 +24,7 @@ const userMutations = {
   },
   login: {
     type: UserType,
-    description: "Authenticate user",
+    description: "Authenticate user and get new JWT token",
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString }

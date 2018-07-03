@@ -25,14 +25,14 @@ function login({ email, password, context }) {
   return User.findByCredentials(email, password)
     .then(user => {
       return user.generateAuthToken().then(token => {
+     
         //todo:  Change it to use the last Token
         context.res.header("x-auth", user.tokens[0].token);
         return user;
       });
     })
     .catch(e => {
-      console.log("Error Login: ", e);
-      throw new Error("Error Occured Logging In");
+      throw new Error(e);
     });
 }
 
