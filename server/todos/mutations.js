@@ -17,8 +17,7 @@ const todoMutations = {
           return new Todo({ text, _creator: user._id }).save();
         })
         .catch(err => {
-          console.log("Error: ", err);
-          return new Error("Invalid Token...");
+          return new Error(err);
         });
     }
   }

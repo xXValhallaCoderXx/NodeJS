@@ -15,8 +15,8 @@ const authenticate = req => {
         req.token = token;
         resolve(user);
       })
-      .catch(e => {
-        reject("Error: ", e);
+      .catch(() => {
+        reject("Error occured authenticating user...");
       });
   });
 };
