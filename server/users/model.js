@@ -47,6 +47,18 @@ UserSchema.methods.generateAuthToken = function() {
   });
 };
 
+UserSchema.methods.removeToken = function(token){
+  // Mongo DB Operator - Remove items from array that match certain criteria
+  const user = this;
+
+  // Will remove the whole object
+  return user.update({
+    $pull: {
+      tokens: {token}
+    }
+  });
+}
+
 // MONGOOSE MIDDLEWARE
 
 UserSchema.pre("save", function(next) {

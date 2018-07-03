@@ -32,13 +32,6 @@ const userMutations = {
     resolve(parentValue, { email, password }, context){
       return AuthService.login({email, password, context});
     }
-  },
-  logout: {
-    type: UserType,
-    description: "Logout user", 
-    resolve(parentValue, {}, context){
-      return "WIP"
-    }
   }
 };
 

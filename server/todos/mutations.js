@@ -4,6 +4,8 @@ const Todo = require("../todos/model");
 const TodoType = require("../todos/type");
 const { authenticate } = require("../utils/auth");
 
+// Todo - Transfer Todo stuff to a helper function
+
 const todoMutations = {
   addTodo: {
     type: TodoType,
@@ -31,7 +33,7 @@ const todoMutations = {
       // TODO - This works but returns null - Need to fix
       return authenticate(context.req)
         .then(user => {
-          Todo.findOneAndRemove({
+          return Todo.findOneAndRemove({
             _id: id,
             _creator: user._id
           })
@@ -71,7 +73,7 @@ const todoMutations = {
             completedAt = null;
           }
 
-          Todo.findOneAndUpdate(
+          return Todo.findOneAndUpdate(
             {
               _id: id,
               _creator: user._id
