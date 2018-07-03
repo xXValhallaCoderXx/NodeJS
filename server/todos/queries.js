@@ -7,6 +7,7 @@ const { authenticate } = require("../utils/auth");
 const todoQueries = {
   todos: {
     type: new GraphQLList(TodoType),
+    description: "Return all todos of authentcated user",
     resolve(parentValue, {}, context) {
       return authenticate(context.req)
         .then(user => {
@@ -20,13 +21,13 @@ const todoQueries = {
             });
         })
         .catch(err => {
-          console.log("Error: ", err);
-          return new Error("Invalid Token...");
+          return new Error(err);
         });
     }
   },
   todo: {
     type: TodoType,
+    description: "Return specifc todo of user",
     args: {
       id: { type: GraphQLString }
     },
@@ -42,8 +43,7 @@ const todoQueries = {
             });
         })
         .catch(err => {
-          console.log("Auth Error: ", err);
-          return new Error("Error occured");
+          return new Error(err);
         });
     }
   }

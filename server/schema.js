@@ -7,7 +7,7 @@ module.exports = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: "Queries",
     fields: () => ({
-      ...userQueries,
+      //...userQueries,
       ...todoQueries
     })
   }),

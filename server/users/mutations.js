@@ -13,6 +13,7 @@ const AuthService = require("./auth");
 const userMutations = {
   signup: {
     type: UserType,
+    description: "Add new user",
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString }
@@ -23,6 +24,7 @@ const userMutations = {
   },
   login: {
     type: UserType,
+    description: "Authenticate user",
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString }
@@ -33,8 +35,9 @@ const userMutations = {
   },
   logout: {
     type: UserType,
+    description: "Logout user", 
     resolve(parentValue, {}, context){
-      
+      return "WIP"
     }
   }
 };
