@@ -8,7 +8,7 @@ module.exports = new GraphQLSchema({
     name: "Queries",
     description: `Queries here will search the in request header for a value called "x-auth" which should have a token acquired when you create or login a user.`,
     fields: () => ({
-      ...userQueries,
+      //...userQueries,
       ...todoQueries
     })
   }),
