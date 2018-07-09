@@ -12,7 +12,9 @@ const app = express();
 app.use(logger("dev"));
 
 // Allow CORS - USING PACKAGE
-app.use(cors())
+app.use(cors({
+  exposedHeaders: ['X-auth']
+}))
 
 // NOT WORKING - WHY??
 // app.use((req, res, next) => {
