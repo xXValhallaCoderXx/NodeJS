@@ -1,4 +1,7 @@
-# Node JS TODO Applications
+# Node JS Repo
+- This repo will have various Node JS / TS Projects to develop a grasp of various concepts with the language and for experimentation.
+
+### Node JS TODO Applications
 These are show case sample programs to get a basic understanding of various different technologies, each application will be built upon the same following concepts:
 
 - Authentication: There should be protect, and unprotected routes which are only accessible to certain users
