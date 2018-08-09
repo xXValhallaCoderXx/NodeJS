@@ -2,7 +2,7 @@
 export {};
 
 // tslint:disable-next-line:variable-name
-const Player = require("./Player");
+const { Player } = require("./Player");
 // tslint:disable-next-line:variable-name
 const Mage = require("./Mage");
 
