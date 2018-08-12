@@ -1,15 +1,20 @@
-const readline = require("readline");
-const { Mage, Player } = require("./Player");
+// const readline = require("readline");
+const { Vampire, Player } = require("./src/Models");
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
 
-rl.question("What is your name young warrior? ", (answer: any) => {
-  const newPlayer = new Player({ name: answer });
-  // TODO: Add to DB
-  newPlayer.showStats();
-  console.log("Weapon: ", newPlayer.weapon[0]);
-  rl.close();
-});
+
+// rl.question("What is your name young warrior? ", (answer: any) => {
+//   newPlayerName = answer;
+//   rl.close();
+// });
+
+const newPlayer = new Player("Nate");
+newPlayer.showStats();
+newPlayer.showWeapon();
+
+const newEnemy = new Vampire("Vampy");
+newEnemy.showStats();

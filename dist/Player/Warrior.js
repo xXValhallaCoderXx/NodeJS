@@ -15,13 +15,17 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable-next-line:variable-name
 var Player = require("./Player");
-var Mage = /** @class */ (function (_super) {
-    __extends(Mage, _super);
-    function Mage(name, hp) {
-        if (hp === void 0) { hp = 175; }
-        return _super.call(this) || this;
+var Warrior = /** @class */ (function (_super) {
+    __extends(Warrior, _super);
+    function Warrior(_a) {
+        var _b = _a.name, name = _b === void 0 ? "" : _b, _c = _a.hp, hp = _c === void 0 ? 1 : _c;
+        var _this = _super.call(this) || this;
+        _this.name = name;
+        _this.hp = hp;
+        return _this;
+        // this.weapon = this.weapon.push(new Weapon());
     }
-    return Mage;
+    return Warrior;
 }(Player));
-module.exports = Mage;
-//# sourceMappingURL=Mage.js.map
+module.exports = Warrior;
+//# sourceMappingURL=Warrior.js.map

@@ -2,13 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable-next-line:variable-name
 var Player = require("./Player").Player;
-// tslint:disable-next-line:variable-name
-var Mage = require("./Mage");
-// tslint:disable-next-line:variable-name
-var Warrior = require("./Warrior");
+var Weapon = require("./Weapon").Weapon;
+var Vampire = require("./Vampire").Vampire;
 module.exports = {
     Player: Player,
-    Mage: Mage,
-    Warrior: Warrior,
+    Weapon: Weapon,
+    Vampire: Vampire
 };
 //# sourceMappingURL=index.js.map
