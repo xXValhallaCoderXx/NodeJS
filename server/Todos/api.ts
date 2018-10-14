@@ -1,30 +1,30 @@
-const express = require("express");
-const router = express.Router();
-const bodyParser = require("body-parser");
-const { ObjectID } = require('mongodb');
+import { Router, Request, Response } from "express";
+import bodyParser from "body-parser";
 
+const router = Router();
 const Todo = require("./model");
 
 router.use(bodyParser.json());
 
 // GET -- List of all Todos
-router.get("/todos", (req, res) => {
+router.get("/todos", (req: Request, res: Response) => {
   Todo.find()
-    .then(todos => {
+    .then((todos: any) => {
+      console.log("TODOS ", todos);
       return res.status(200).send({ success: true, data: todos });
     })
-    .catch(e => {
+    .catch((e: any) => {
       return res.status(400).send({ success: false, data: null });
     });
 });
 
 // GET -- Get a specific Todo via ID
 
-router.get("/todos/:id", (req, res) => {
+router.get("/todos/:id", (req: Request, res: Response) => {
   const id = req.params.id;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // }
   Todo.findById(id)
-    .then(todo => {
+    .then((todo: any) => {
       if (!todo) {
         return res
           .status(404)
@@ -32,34 +32,34 @@ router.get("/todos/:id", (req, res) => {
       }
       return res.status(200).send({ success: true, data: todo });
     })
-    .catch(e => {
+    .catch((e: any) => {
       return res.status(400).send({ success: false, data: null });
     });
 });
 
 // POST - Create a new Todo
 
-router.post("/todos", (req, res) => {
+router.post("/todos", (req: Request, res: Response) => {
   const todo = new Todo({
     text: req.body.text
   });
 
   todo
     .save()
-    .then(doc => {
+    .then((doc: any) => {
       return res.status(200).send({ success: true, data: doc });
     })
-    .catch(e => {
+    .catch((e: any) => {
       return res.status(400).send({ success: false, data: null });
     });
 });
 
 
 
-router.delete("/todos/:id", (req, res) => {
+router.delete("/todos/:id", (req: Request, res: Response) => {
   const id = req.params.id;
   Todo.findOneAndRemove({ _id: id })
-    .then(todo => {
+    .then((todo: any) => {
       if (!todo) {
         return res
           .status(404)
@@ -67,12 +67,12 @@ router.delete("/todos/:id", (req, res) => {
       }
       return res.status(200).send({ success: true, data: todo });
     })
-    .catch(e => {
+    .catch((e: any) => {
       return res.status(404).send({ success: false, data: null });
     });
 });
 
-router.patch("/todos/:id", (req, res) => {
+router.patch("/todos/:id", (req: Request, res: Response) => {
   const id = req.params.id;
   const text = req.body.text;
   let completed = req.body.completed;
@@ -96,7 +96,7 @@ router.patch("/todos/:id", (req, res) => {
     },
     { new: true }
   )
-    .then(todo => {
+    .then((todo: any) => {
       
       if (!todo) {
         return res
@@ -105,10 +105,11 @@ router.patch("/todos/:id", (req, res) => {
       }
       return res.status(200).send({ success: true, data: todo });
     })
-    .catch(e => {
+    .catch((e: any) => {
       console.log("ERROR: ", e);
       return res.status(400).send({ success: false, data: null });
     });
 });
 
-module.exports = router;
+// module.exports = router;
+export const TodoController: Router = router;
