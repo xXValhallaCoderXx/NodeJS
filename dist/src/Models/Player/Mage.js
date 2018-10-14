@@ -13,17 +13,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Enemy = require("./Enemy").Enemy;
-var Vampire = /** @class */ (function (_super) {
-    __extends(Vampire, _super);
-    function Vampire(name) {
-        return _super.call(this, name, 300, 4, 6, 6) || this;
+var Player = require("./index").Player;
+var Mage = /** @class */ (function (_super) {
+    __extends(Mage, _super);
+    function Mage(name) {
+        return _super.call(this, name, 200, 2, 3, 6) || this;
     }
-    Vampire.prototype.takeDamage = function (hit) {
-        // We are still using the base class function, and just modifying the damage passed
-        _super.prototype.takeDamage.call(this, hit / 2);
-    };
-    return Vampire;
-}(Enemy));
-exports.Vampire = Vampire;
-//# sourceMappingURL=Vampire.js.map
+    return Mage;
+}(Player));
+exports.Mage = Mage;
+//# sourceMappingURL=Mage.js.map

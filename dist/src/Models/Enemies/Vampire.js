@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Enemy = require("./Enemy").Enemy;
+var Enemy = require("./index").Enemy;
 var Vampire = /** @class */ (function (_super) {
     __extends(Vampire, _super);
     function Vampire(name) {

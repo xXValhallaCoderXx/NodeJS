@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Loot = require("./Loot").Loot;
-var Weapon = require("./Weapon").Weapon;
+var _a = require("../Items"), Loot = _a.Loot, Weapon = _a.Weapon;
 var Player = /** @class */ (function () {
     function Player(name, hp, str, dex, int) {
         if (hp === void 0) { hp = 150; }
@@ -12,7 +11,6 @@ var Player = /** @class */ (function () {
         this.removeLoot = function (item) {
             _this.inventory.map(function (currentItem) {
                 if (currentItem.name !== item) {
-                    console.log("HMMM");
                     return item;
                 }
             });

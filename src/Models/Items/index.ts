@@ -1,12 +1,12 @@
 export {};
 
 // tslint:disable-next-line:variable-name
-const { Player } = require("./Player");
+const { Loot } = require("./Loot");
+const { Potions } = require("./Potions");
 const { Weapon } = require("./Weapon");
-const { Vampire } = require("./Vampire");
 
 module.exports = {
-  Player,
-  Weapon,
-  Vampire
+  Loot,
+  Potions,
+  Weapon
 };
